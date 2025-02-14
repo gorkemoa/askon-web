@@ -1383,7 +1383,18 @@ img {
     margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    
+    position: relative;
+}
+
+.references__title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--secondary-color);
 }
 
 .references__description {
