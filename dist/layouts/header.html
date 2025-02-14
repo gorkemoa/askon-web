@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            z-index: 50;
+        }
+        .group:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover {
+            background: linear-gradient(to right, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+            color: #c4a47c;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-accordion-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+        .mobile-accordion-content.active {
+            display: block;
+        }
+        /* Header yüksekliğini telafi etmek için */
+        .header-offset {
+            height: 80px;
+        }
+        /* Dropdown ok animasyonu */
+        .dropdown-arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+        .group:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        /* Aktif menü öğesi için alt çizgi */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #2563eb;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+            transform-origin: center;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--neutral-100);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: var(--z-fixed);
+        }
+
+        .header__container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header__logo {
+            font-size: 2rem;
+            font-weight: var(--font-bold);
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .header__logo:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav__link {
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            color: var(--neutral-700);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav__link:hover::after,
+        .nav__link.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav__link:hover,
+        .nav__link.active {
+            color: var(--secondary-color);
+        }
+
+        /* Dropdown */
+        .nav__item-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: var(--neutral-100);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav__item-dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            font-size: var(--text-sm);
+            color: var(--neutral-700);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--neutral-200);
+            color: var(--secondary-color);
+        }
+
+        /* Mobil Menü Butonu */
+        .mobile-menu-button {
+            display: none;
+            padding: 0.5rem;
+            color: var(--neutral-700);
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .nav.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--neutral-100);
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav__list {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+            
+            .nav__link {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid var(--neutral-200);
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 1rem;
+                background-color: var(--neutral-200);
+                margin: 0.5rem 0;
+            }
+            
+            .dropdown-content a {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid var(--neutral-300);
+            }
+            
+            .dropdown-content a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(196, 164, 124, 0.1);
+        }
+
+        .nav-link {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, #c4a47c, #e2b13c);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(196, 164, 124, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(to right, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+        }
+
+        .mobile-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+
+<header class="header fixed w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-2">
+                <span class="text-2xl font-light tracking-wider text-[#c4a47c]">ASKON</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="/" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    ANASAYFA
+                </a>
+
+                <!-- Ürünler Dropdown -->
+                <div class="group relative">
+                    <button class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 flex items-center">
+                        <span>ÜRÜNLER</span>
+                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="py-2">
+                            <a href="#celik-kapi" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Çelik Kapılar</a>
+                            <a href="#parke" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Laminat Parke</a>
+                            <a href="#celik-govde" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Çelik Gövde</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kurumsal Dropdown -->
+                <div class="group relative">
+                    <button class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 flex items-center">
+                        <span>KURUMSAL</span>
+                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="py-2">
+                            <a href="#hakkimizda" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Hakkımızda</a>
+                            <a href="#vizyon" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Vizyon & Misyon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/projeler" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    PROJELER
+                </a>
+
+                <a href="/satis-noktalari" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    SATIŞ NOKTALARI
+                </a>
+
+                <a href="/iletisim" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    İLETİŞİM
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button type="button" class="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#c4a47c] focus:outline-none" id="mobile-menu-button">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 bg-white/98 z-50 hidden lg:hidden" id="mobile-menu">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-light tracking-wider text-[#c4a47c]">ASKON</span>
+                <button type="button" class="p-2 text-gray-700 hover:text-[#c4a47c] focus:outline-none" id="mobile-menu-close">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="space-y-6">
+                <a href="/" class="block text-lg text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    ANASAYFA
+                </a>
+                <div class="mobile-accordion">
+                    <button class="flex justify-between items-center w-full text-lg text-gray-700 hover:text-[#c4a47c]">
+                        <span>ÜRÜNLER</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-accordion-content">
+                        <a href="#celik-kapi" class="block text-gray-600 hover:text-[#c4a47c]">Çelik Kapılar</a>
+                        <a href="#parke" class="block text-gray-600 hover:text-[#c4a47c]">Laminat Parke</a>
+                        <a href="#celik-govde" class="block text-gray-600 hover:text-[#c4a47c]">Çelik Gövde</a>
+                    </div>
+                </div>
+                <!-- Diğer mobil menü öğeleri benzer şekilde -->
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Header offset div -->
+<div class="header-offset"></div>
+
+<script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const accordions = document.querySelectorAll('.mobile-accordion button');
+
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const arrow = this.querySelector('svg');
+            
+            content.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        });
+    });
+</script>
