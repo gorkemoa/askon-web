@@ -1,0 +1,12 @@
+{
+  "name": "askon-website",
+  "version": "1.0.0",
+  "description": "Askon Çelik Kapı ve Parke Sistemleri Web Sitesi",
+  "scripts": {
+    "start": "live-server",
+    "dev": "live-server"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+} 
