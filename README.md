@@ -83,9 +83,6 @@ git push origin feature/yeni-ozellik
 
 4. Bir Pull Request oluşturun
 
-## 🌐 Canlı Demo
-
-[https://askon.com.tr](https://askon.com.tr)
 
 ## 📄 Lisans
 
