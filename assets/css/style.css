@@ -634,10 +634,14 @@ img {
     padding: 8rem 0;
     background-color: var(--neutral-200);
     overflow: hidden;
+    
 }
 
+
+
+
 .about .container {
-    margin-bottom: 6rem;
+    margin-bottom: 6rem;    
 }
 
 .about .container:last-child {
@@ -649,10 +653,13 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
     align-items: center;
+    
 }
 
 .about__grid--reverse {
     margin-top: 4rem;
+    
+
 }
 
 .section__subtitle {

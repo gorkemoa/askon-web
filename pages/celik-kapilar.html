@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çelik Kapılar | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        #header-container {
+            position: relative;
+            z-index: 50;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        .category-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div id="header-container"></div>
+    <div class="h-20"></div>
+
+    <!-- Hero Bölümü -->
+    <section class="relative h-[60vh] flex items-center justify-center">
+        <!-- Arka plan görseli -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?ixlib=rb-4.0.3" 
+                 alt="Çelik Kapılar Arka Plan" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        <!-- Hero İçeriği -->
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-6xl font-light mb-6 text-white tracking-wide">
+                ÇELİK KAPILAR
+            </h1>
+            <div class="w-24 h-1 bg-[var(--accent-color)] mx-auto mb-6"></div>
+            <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+                Villa kapıları, iç kapılar ve pivot kapılar koleksiyonumuzda modern tasarım ve yüksek güvenlik bir arada. ASKON kalitesiyle evinizin güvenliği artık daha şık.
+            </p>
+            <nav class="mt-8" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-2 bg-black bg-opacity-30 px-4 py-2 rounded-full">
+                    <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Ana Sayfa</a></li>
+                    <li class="text-gray-300">/</li>
+                    <li class="text-white">Çelik Kapılar</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Kategori Navigasyonu -->
+    <section class="py-8 bg-white shadow-sm sticky top-20 z-40">
+        <div class="container mx-auto px-4">
+            <nav class="flex flex-wrap justify-center gap-6 text-lg">
+                <a href="#villa-kapilari" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    Villa Kapıları
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+                <a href="#ic-kapilar" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    İç Kapılar
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+                <a href="#pivot-kapilar" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    Pivot Kapılar
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Filtreler ve Arama -->
+    <section class="pt-24 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <!-- Arama -->
+                <div class="w-full md:w-auto">
+                    <input type="text" placeholder="Ürün ara..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
+                </div>
+                <!-- Filtreler -->
+
+                    <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
+                        <option value="">Fiyat Sırala</option>
+                        <option value="asc">Artan Fiyat</option>
+                        <option value="desc">Azalan Fiyat</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa Kapıları -->
+    <section id="villa-kapilari" class="py-12 scroll-mt-40">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-gray-900 category-title">Villa Kapıları</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- SL 01 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL01.webp" alt="SL 01 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">SL 01</h3>
+                        <p class="text-gray-600 text-sm mb-4">Modern tasarım, çift güvenlik kilidi</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺14.999</span>
+                            <button class="bg-[var(--accent-color)] text-black px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                              <a href="/pages/celik-kapi-detay.html"> İncele</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SL 02 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL04.webp" alt="SL 02 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">SL 02</h3>
+                        <p class="text-gray-600 text-sm mb-4">Klasik tasarım, yüksek güvenlik</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺15.499</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SL 03 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL03.webp" alt="SL 03 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">SL 03</h3>
+                        <p class="text-gray-600 text-sm mb-4">Endüstriyel tasarım, tuğla doku</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺16.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Villa Kapısı 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL05.webp" alt="VK 04 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">VK 04</h3>
+                        <p class="text-gray-600 text-sm mb-4">Lüks tasarım, altın detaylar</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺21.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Villa Kapısı 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL05.webp" alt="VK 05 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">VK 05</h3>
+                        <p class="text-gray-600 text-sm mb-4">Art deco tasarım, bronz detaylar</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺19.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Villa Kapısı 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3" alt="VK 06 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">VK 06</h3>
+                        <p class="text-gray-600 text-sm mb-4">Vintage tasarım, pirinç detaylar</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺18.499</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Villa Kapısı 7 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3" alt="VK 07 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">VK 07</h3>
+                        <p class="text-gray-600 text-sm mb-4">Rustik tasarım, ahşap dokulu</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺17.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Villa Kapısı 8 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/UNIVERSE.webp" alt="VK 08 Villa Kapısı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Villa Kapısı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">VK 08</h3>
+                        <p class="text-gray-600 text-sm mb-4">Endüstriyel tasarım, çelik doku</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺16.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İç Kapılar -->
+    <section id="ic-kapilar" class="py-12 bg-gray-100 scroll-mt-40">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-gray-900 category-title">İç Kapılar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- FORKED -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/FORKED.webp" alt="FORKED İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">FORKED</h3>
+                        <p class="text-gray-600 text-sm mb-4">Ahşap dokulu, özel tasarım</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺18.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UNIVERSE -->   
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/UNIVERSE.webp" alt="UNIVERSE İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">UNIVERSE</h3>
+                        <p class="text-gray-600 text-sm mb-4">Dairesel desenli, ahşap kaplama</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺19.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IREM -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/IREM.webp" alt="IREM İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">IREM</h3>
+                        <p class="text-gray-600 text-sm mb-4">Modern ahşap doku, oval detay</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺17.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İç Kapı 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/IREM.webp" alt="İK 04 İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">İK 04</h3>
+                        <p class="text-gray-600 text-sm mb-4">Amerikan panel, lake boyalı</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺8.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İç Kapı 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/IREM.webp" alt="İK 05 İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">İK 05</h3>
+                        <p class="text-gray-600 text-sm mb-4">Modern çizgili, mat siyah</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺9.499</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İç Kapı 6 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/IREM.webp" alt="İK 06 İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">İK 06</h3>
+                        <p class="text-gray-600 text-sm mb-4">Camlı model, füme cam</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺10.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İç Kapı 7 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/IREM.webp" alt="İK 07 İç Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            İç Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">İK 07</h3>
+                        <p class="text-gray-600 text-sm mb-4">Klasik panel, ceviz kaplama</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺11.499</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pivot Kapılar -->
+    <section id="pivot-kapilar" class="py-12 scroll-mt-40">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-gray-900 category-title">Pivot Kapılar</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- SL 04 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/ALBERO-PIVOT-.webp" alt="SL 04 Pivot Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Pivot Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">SL 04</h3>
+                        <p class="text-gray-600 text-sm mb-4">Modern pivot tasarım, sarı detaylar</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺15.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SL 05 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/ALBERO-PIVOT-.webp" alt="SL 05 Pivot Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Pivot Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">SL 05</h3>
+                        <p class="text-gray-600 text-sm mb-4">Minimalist pivot tasarım, gri tonlar</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺14.499</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pivot Kapı 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/ALBERO-PIVOT-.webp" alt="PK 03 Pivot Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Pivot Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">PK 03</h3>
+                        <p class="text-gray-600 text-sm mb-4">Çift yönlü pivot, özel tasarım</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺24.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pivot Kapı 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                        <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/ALBERO-PIVOT-.webp" alt="PK 04 Pivot Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Pivot Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">PK 04</h3>
+                        <p class="text-gray-600 text-sm mb-4">Geniş pivot, cam detaylı</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺26.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pivot Kapı 5 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="product-image">
+                            <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/ALBERO-PIVOT-.webp" alt="PK 05 Pivot Kapı" class="w-full h-80 object-cover">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded-full text-sm">
+                            Pivot Kapı
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-800 mb-2">PK 05</h3>
+                        <p class="text-gray-600 text-sm mb-4">Lüks pivot, altın detaylı</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-[var(--primary-color)]">₺29.999</span>
+                            <button class="bg-[var(--accent-color)] text-white px-4 py-2 rounded-md hover:bg-[var(--primary-color)] transition-colors duration-300">
+                                İncele
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Sayfa yüklendiğinde URL'deki hash'e göre scroll yap
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Aktif kategoriyi vurgula
+                        document.querySelectorAll('.category-nav-item').forEach(item => {
+                            const href = item.getAttribute('href');
+                            if (href === hash) {
+                                item.classList.add('text-[var(--accent-color)]');
+                                item.querySelector('span').classList.add('scale-x-100');
+                            } else {
+                                item.classList.remove('text-[var(--accent-color)]');
+                                item.querySelector('span').classList.remove('scale-x-100');
+                            }
+                        });
+                    }, 500); // Header yüklenmesi için kısa bir gecikme
+                }
+            }
+        });
+
+        // Smooth scroll için
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Aktif kategoriyi vurgula
+                document.querySelectorAll('.category-nav-item').forEach(item => {
+                    item.classList.remove('text-[var(--accent-color)]');
+                    item.querySelector('span').classList.remove('scale-x-100');
+                });
+                this.classList.add('text-[var(--accent-color)]');
+                this.querySelector('span').classList.add('scale-x-100');
+            });
+        });
+
+        // Scroll olayını dinle ve aktif kategoriyi güncelle
+        window.addEventListener('scroll', () => {
+            const sections = ['villa-kapilari', 'ic-kapilar', 'pivot-kapilar'];
+            let currentSection = '';
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                const rect = section.getBoundingClientRect();
+                
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    currentSection = sectionId;
+                }
+            });
+
+            document.querySelectorAll('.category-nav-item').forEach(item => {
+                const href = item.getAttribute('href').substring(1);
+                if (href === currentSection) {
+                    item.classList.add('text-[var(--accent-color)]');
+                    item.querySelector('span').classList.add('scale-x-100');
+                } else {
+                    item.classList.remove('text-[var(--accent-color)]');
+                    item.querySelector('span').classList.remove('scale-x-100');
+                }
+            });
+        });
+
+        // Tüm ürünleri seç
+        const productCards = document.querySelectorAll('.product-card');
+        const searchInput = document.querySelector('input[placeholder="Ürün ara..."]');
+        const categorySelect = document.querySelector('select:first-of-type');
+        const priceSelect = document.querySelector('select:last-of-type');
+
+        // Ürün arama fonksiyonu
+        function searchProducts(searchTerm) {
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const category = card.querySelector('.absolute').textContent.trim().toLowerCase();
+                const searchText = searchTerm.toLowerCase();
+
+                if (title.includes(searchText) || description.includes(searchText) || category.includes(searchText)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Kategori filtreleme fonksiyonu
+        function filterByCategory(category) {
+            productCards.forEach(card => {
+                const cardCategory = card.querySelector('.absolute').textContent.trim().toLowerCase();
+                if (category === '' || cardCategory === category.toLowerCase()) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Fiyat sıralama fonksiyonu
+        function sortByPrice(order) {
+            const cardsArray = Array.from(productCards);
+            const sortedCards = cardsArray.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('span').textContent.replace('₺', '').replace('.', '').replace(',', '.'));
+                const priceB = parseFloat(b.querySelector('span').textContent.replace('₺', '').replace('.', '').replace(',', '.'));
+                
+                return order === 'asc' ? priceA - priceB : priceB - priceA;
+            });
+
+            const container = document.querySelector('.grid');
+            container.innerHTML = '';
+            sortedCards.forEach(card => {
+                if (card.style.display !== 'none') {
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', (e) => {
+            searchProducts(e.target.value);
+        });
+
+        categorySelect.addEventListener('change', (e) => {
+            const selectedCategory = e.target.value;
+            let categoryText = '';
+            
+            switch(selectedCategory) {
+                case 'villa':
+                    categoryText = 'villa kapısı';
+                    break;
+                case 'ic':
+                    categoryText = 'iç kapı';
+                    break;
+                case 'pivot':
+                    categoryText = 'pivot kapı';
+                    break;
+                default:
+                    categoryText = '';
+            }
+            
+            filterByCategory(categoryText);
+        });
+
+        priceSelect.addEventListener('change', (e) => {
+            sortByPrice(e.target.value);
+        });
+
+        // Sayfa yüklendiğinde tüm ürünleri göster
+        window.addEventListener('load', () => {
+            productCards.forEach(card => {
+                card.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 
