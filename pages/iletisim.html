@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #ebc469;
+            --accent-color: #c4a47c;
+            --gold-light: #f5e6cc;
+            --gold-medium: #e2b13c;
+            --gold-dark: #cbc0a6;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: #fdfbf7;
+        }
+
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(226, 177, 60, 0.08);
+            border: 1px solid var(--gold-light);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(226, 177, 60, 0.15);
+            border-color: var(--gold-medium);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(226, 177, 60, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .contact-card:hover .contact-icon::after {
+            transform: translateX(100%);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 2rem;
+            padding: 3rem;
+            box-shadow: 0 8px 30px rgba(226, 177, 60, 0.1);
+            border: 1px solid var(--gold-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold-medium), var(--gold-dark));
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border: 2px solid var(--gold-light);
+            transition: all 0.3s ease;
+            border-radius: 1rem;
+            background: rgba(253, 251, 247, 0.5);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--gold-medium);
+            box-shadow: 0 0 0 4px rgba(226, 177, 60, 0.1);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .contact-form label {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 1rem;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(226, 177, 60, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(226, 177, 60, 0.3);
+        }
+
+        .submit-button:hover::after {
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .map-container {
+            position: relative;
+            height: 450px;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+            box-shadow: 0 8px 30px rgba(226, 177, 60, 0.1);
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--gold-medium);
+            border-radius: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .map-container:hover::before {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, 
+                rgba(196, 164, 124, 0.9),
+                rgba(226, 177, 60, 0.8),
+                rgba(26, 54, 93, 0.9));
+        }
+
+        .contact-info {
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .contact-info {
+            transform: translateY(-5px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    <div class="h-20"></div>
+
+    <!-- Hero Bölümü -->
+    <section class="relative h-[60vh] flex items-center justify-center">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3" 
+                 alt="İletişim Arka Plan" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="section-title mb-8 floating-element">İLETİŞİM</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-8"></div>
+            <p class="section-description max-w-3xl mx-auto">
+                Sorularınız ve talepleriniz için bizimle iletişime geçebilirsiniz.
+            </p>
+        </div>
+    </section>
+
+    <!-- İletişim Kartları -->
+    <section class="py-20 -mt-24 relative z-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Telefon -->
+                <div class="contact-card p-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Telefon</h3>
+                            <p class="text-gray-600 mb-2">Pazartesi - Cumartesi</p>
+                            <p class="text-gray-600 mb-4">09:00 - 18:00</p>
+                            <a href="tel:+902121234567" class="text-[var(--gold-medium)] hover:text-[var(--gold-dark)] font-medium text-lg">
+                                +90 (212) 123 45 67
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-posta -->
+                <div class="contact-card p-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">E-posta</h3>
+                            <p class="text-gray-600 mb-4">Size en kısa sürede dönüş yapacağız</p>
+                            <a href="mailto:info@askon.com" class="text-[var(--gold-medium)] hover:text-[var(--gold-dark)] font-medium text-lg">
+                                info@askon.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adres -->
+                <div class="contact-card p-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Adres</h3>
+                            <p class="text-gray-600 mb-4">Showroom & Merkez Ofis</p>
+                            <p class="text-gray-600 text-lg">
+                                Örnek Mahallesi, Örnek Sokak No:123
+                                <br>Şişli / İstanbul
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim Formu ve Harita -->
+    <section class="pb-24">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- İletişim Formu -->
+                <div class="contact-form">
+                    <h2 class="text-3xl font-semibold text-gray-900 mb-8">Bize Ulaşın</h2>
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label>Adınız</label>
+                                <input type="text" class="w-full px-4 py-3" required>
+                            </div>
+                            <div>
+                                <label>Soyadınız</label>
+                                <input type="text" class="w-full px-4 py-3" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label>E-posta</label>
+                            <input type="email" class="w-full px-4 py-3" required>
+                        </div>
+                        <div class="mb-6">
+                            <label>Telefon</label>
+                            <input type="tel" class="w-full px-4 py-3" required>
+                        </div>
+                        <div class="mb-8">
+                            <label>Mesajınız</label>
+                            <textarea rows="4" class="w-full px-4 py-3" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button w-full md:w-auto">
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Harita -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.232948771847!2d28.977549315413623!3d41.034657979297946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab703832c7c2d%3A0xe04b41f74c96c1c4!2zxZ5pxZ9saSwgxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1645524倀" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

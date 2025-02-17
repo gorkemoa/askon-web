@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satış Noktaları | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+        }
+        body {
+            font-family: var(--font-primary);
+        }
+        #header-container {
+            position: relative;
+            z-index: 50;
+        }
+        .location-card {
+            transition: all var(--transition-normal);
+            border: 1px solid var(--neutral-200);
+        }
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-light);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+        }
+        .section-description {
+            font-size: var(--text-xl);
+            color: var(--neutral-300);
+            line-height: 1.7;
+        }
+        .search-input {
+            background: var(--neutral-100);
+            border: 2px solid var(--neutral-200);
+            transition: all var(--transition-normal);
+        }
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(196, 164, 124, 0.1);
+        }
+        .region-select {
+            background: var(--neutral-100);
+            border: 2px solid var(--neutral-200);
+            transition: all var(--transition-normal);
+        }
+        .region-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(196, 164, 124, 0.1);
+        }
+        .custom-button {
+            transition: all var(--transition-normal);
+            font-weight: var(--font-medium);
+            letter-spacing: 1px;
+        }
+        .custom-button:hover {
+            transform: translateY(-2px);
+        }
+        .form-input {
+            transition: all var(--transition-normal);
+            border: 2px solid var(--neutral-200);
+        }
+        .form-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(196, 164, 124, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div id="header-container"></div>
+    <div class="h-20"></div>
+
+    <!-- Hero Bölümü -->
+    <section class="relative h-[70vh] flex items-center justify-center">
+        <!-- Arka plan görseli -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3" 
+                 alt="Satış Noktaları Arka Plan" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"></div>
+        </div>
+        
+        <!-- Hero İçeriği -->
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="section-title mb-8">
+                SATIŞ NOKTALARI
+            </h1>
+            <div class="w-32 h-1 bg-[var(--accent-color)] mx-auto mb-8"></div>
+            <p class="section-description max-w-3xl mx-auto mb-12">
+                Türkiye'nin dört bir yanında hizmetinizdeyiz. Size en yakın ASKON satış noktasını keşfedin.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filtre ve Arama Bölümü -->
+    <section class="py-16 -mt-10 relative z-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex flex-wrap gap-6">
+                    <div class="flex-1">
+                        <input type="text" 
+                               placeholder="Şehir veya ilçe ara..." 
+                               class="search-input w-full px-5 py-4 rounded-lg text-[var(--text-color)]">
+                    </div>
+                    <select class="region-select px-5 py-4 rounded-lg text-[var(--text-color)] min-w-[200px]">
+                        <option value="">Tüm Bölgeler</option>
+                        <option value="marmara">Marmara Bölgesi</option>
+                        <option value="ege">Ege Bölgesi</option>
+                        <option value="akdeniz">Akdeniz Bölgesi</option>
+                        <option value="ic-anadolu">İç Anadolu Bölgesi</option>
+                        <option value="karadeniz">Karadeniz Bölgesi</option>
+                        <option value="dogu-anadolu">Doğu Anadolu Bölgesi</option>
+                        <option value="guneydogu">Güneydoğu Anadolu Bölgesi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Satış Noktaları Listesi -->
+    <section class="pb-24">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- İstanbul Mağazası -->
+                <div class="location-card bg-white rounded-xl overflow-hidden p-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-light text-[var(--primary-color)] mb-2">İstanbul Mağazası</h3>
+                            <p class="text-[var(--accent-color)] font-medium">Marmara Bölgesi</p>
+                        </div>
+                        <span class="bg-green-50 text-green-700 text-sm font-medium px-4 py-1 rounded-full border border-green-200">
+                            Açık
+                        </span>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="flex items-start space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] mt-1"></i>
+                            <span>Bağdat Caddesi No: 123, Kadıköy, İstanbul</span>
+                        </p>
+                        <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-phone text-[var(--accent-color)]"></i>
+                            <span>+90 (216) 123 45 67</span>
+                        </p>
+                        <div class="pt-2">
+                            <p class="text-sm text-[var(--text-color-light)] mb-1">Çalışma Saatleri:</p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>09:00 - 19:00 (Hafta içi)</span>
+                            </p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>10:00 - 18:00 (Hafta sonu)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="custom-button flex-1 bg-[var(--accent-color)] text-white text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                            Yol Tarifi Al
+                        </a>
+                        <a href="#" class="custom-button flex-1 border-2 border-[var(--accent-color)] text-[var(--accent-color)] text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ankara Mağazası -->
+                <div class="location-card bg-white rounded-xl overflow-hidden p-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-light text-[var(--primary-color)] mb-2">Ankara Mağazası</h3>
+                            <p class="text-[var(--accent-color)] font-medium">İç Anadolu Bölgesi</p>
+                        </div>
+                        <span class="bg-green-50 text-green-700 text-sm font-medium px-4 py-1 rounded-full border border-green-200">
+                            Açık
+                        </span>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="flex items-start space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] mt-1"></i>
+                            <span>Tunalı Hilmi Cad. No: 456, Çankaya, Ankara</span>
+                        </p>
+                        <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-phone text-[var(--accent-color)]"></i>
+                            <span>+90 (312) 123 45 67</span>
+                        </p>
+                        <div class="pt-2">
+                            <p class="text-sm text-[var(--text-color-light)] mb-1">Çalışma Saatleri:</p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>09:00 - 19:00 (Hafta içi)</span>
+                            </p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>10:00 - 18:00 (Hafta sonu)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="custom-button flex-1 bg-[var(--accent-color)] text-white text-center py-3 px-6 rounded-lg hover:bg-[var(--primary-color)]">
+                            Yol Tarifi Al
+                        </a>
+                        <a href="#" class="custom-button flex-1 border-2 border-[var(--accent-color)] text-[var(--accent-color)] text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+
+                <!-- İzmir Mağazası -->
+                <div class="location-card bg-white rounded-xl overflow-hidden p-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-light text-[var(--primary-color)] mb-2">İzmir Mağazası</h3>
+                            <p class="text-[var(--accent-color)] font-medium">Ege Bölgesi</p>
+                        </div>
+                        <span class="bg-green-50 text-green-700 text-sm font-medium px-4 py-1 rounded-full border border-green-200">
+                            Açık
+                        </span>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="flex items-start space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] mt-1"></i>
+                            <span>Alsancak Cad. No: 789, Konak, İzmir</span>
+                        </p>
+                        <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-phone text-[var(--accent-color)]"></i>
+                            <span>+90 (232) 123 45 67</span>
+                        </p>
+                        <div class="pt-2">
+                            <p class="text-sm text-[var(--text-color-light)] mb-1">Çalışma Saatleri:</p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>09:00 - 19:00 (Hafta içi)</span>
+                            </p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>10:00 - 18:00 (Hafta sonu)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="custom-button flex-1 bg-[var(--accent-color)] text-white text-center py-3 px-6 rounded-lg hover:bg-[var(--primary-color)]">
+                            Yol Tarifi Al
+                        </a>
+                        <a href="#" class="custom-button flex-1 border-2 border-[var(--accent-color)] text-[var(--accent-color)] text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Antalya Mağazası -->
+                <div class="location-card bg-white rounded-xl overflow-hidden p-8"> 
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-light text-[var(--primary-color)] mb-2">Antalya Mağazası</h3>
+                            <p class="text-[var(--accent-color)] font-medium">Akdeniz Bölgesi</p>
+                        </div>
+                        <span class="bg-green-50 text-green-700 text-sm font-medium px-4 py-1 rounded-full border border-green-200">
+                            Açık
+                        </span>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="flex items-start space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-map-marker-alt text-[var(--accent-color)] mt-1"></i>
+                            <span>Konyaaltı Cad. No: 101, Muratpaşa, Antalya</span>
+                        </p>
+                        <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                            <i class="fas fa-phone text-[var(--accent-color)]"></i>
+                            <span>+90 (242) 123 45 67</span>
+                        </p>
+                        <div class="pt-2">
+                            <p class="text-sm text-[var(--text-color-light)] mb-1">Çalışma Saatleri:</p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>09:00 - 19:00 (Hafta içi)</span>
+                            </p>
+                            <p class="flex items-center space-x-3 text-[var(--text-color)]">
+                                <i class="fas fa-clock text-[var(--accent-color)]"></i>
+                                <span>10:00 - 18:00 (Hafta sonu)</span>
+                            </p>
+                        </div>
+                    </div>  
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="custom-button flex-1 bg-[var(--accent-color)] text-white text-center py-3 px-6 rounded-lg hover:bg-[var(--primary-color)]">
+                            Yol Tarifi Al
+                        </a>
+                        <a href="#" class="custom-button flex-1 border-2 border-[var(--accent-color)] text-[var(--accent-color)] text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bayilik Başvuru Formu -->
+    <section class="py-24 bg-[var(--neutral-100)]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-light text-[var(--primary-color)] mb-4">Bayilik Başvurusu</h2>
+                    <div class="w-24 h-1 bg-[var(--accent-color)] mx-auto mb-6"></div>
+                    <p class="text-[var(--text-color-light)] text-lg">ASKON ailesine katılmak için bayilik başvurusu yapabilirsiniz.</p>
+                </div>
+                
+                <form class="space-y-6 bg-white p-10 rounded-2xl shadow-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Adınız" 
+                               class="form-input w-full px-5 py-4 rounded-lg">
+                        <input type="text" placeholder="Soyadınız" 
+                               class="form-input w-full px-5 py-4 rounded-lg">
+                    </div>
+                    <input type="email" placeholder="E-posta Adresiniz" 
+                           class="form-input w-full px-5 py-4 rounded-lg">
+                    <input type="tel" placeholder="Telefon Numaranız" 
+                           class="form-input w-full px-5 py-4 rounded-lg">
+                    <input type="text" placeholder="Şehir" 
+                           class="form-input w-full px-5 py-4 rounded-lg">
+                    <textarea placeholder="Mesajınız" rows="4" 
+                              class="form-input w-full px-5 py-4 rounded-lg resize-none"></textarea>
+                    <button type="submit" class="custom-button flex-1 border-2 border-[var(--accent-color)] text-[var(--accent-color)] text-center py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white">
+                        Başvuru Yap 
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+
+        // Arama ve filtreleme işlevselliği
+        const searchInput = document.querySelector('.search-input');
+        const regionSelect = document.querySelector('.region-select');
+        const locationCards = document.querySelectorAll('.location-card');
+
+        function filterLocations() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedRegion = regionSelect.value.toLowerCase();
+
+            locationCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                const cardRegion = card.querySelector('p').textContent.toLowerCase();
+                
+                const matchesSearch = cardText.includes(searchTerm);
+                const matchesRegion = selectedRegion === '' || cardRegion.includes(selectedRegion);
+
+                if (matchesSearch && matchesRegion) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterLocations);
+        regionSelect.addEventListener('change', filterLocations);
+    </script>
+</body>
+</html> 

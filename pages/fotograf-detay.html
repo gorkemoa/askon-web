@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Çelik Kapı | ASKON Fotoğraf Galeri</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+            --gold-light: #f5e6cc;
+            --gold-medium: #e2b13c;
+            --gold-dark: #b38728;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: #fdfbf7;
+        }
+
+        .photo-hero {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26, 54, 93, 0.3), rgba(26, 54, 93, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 3rem 0;
+        }
+
+        .photo-category {
+            background: var(--gold-medium);
+            color: var(--neutral-100);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 10px rgba(226, 177, 60, 0.2);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .photo-title {
+            color: var(--neutral-100);
+            font-size: 3rem;
+            font-weight: var(--font-bold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .photo-meta {
+            color: var(--neutral-200);
+            font-size: var(--small-font-size);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .photo-meta i {
+            color: var(--gold-medium);
+        }
+
+        .share-button {
+            background: var(--gold-medium);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .share-button:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .photo-description {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(226, 177, 60, 0.08);
+            border: 1px solid var(--gold-light);
+            padding: 2rem;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .related-photo {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gold-light);
+        }
+
+        .related-photo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(226, 177, 60, 0.15);
+            border-color: var(--gold-medium);
+        }
+
+        .related-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .related-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .related-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.4));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .related-photo:hover .related-overlay {
+            opacity: 1;
+        }
+
+        .photo-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--gold-light);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: var(--font-medium);
+            transition: all var(--transition-normal);
+        }
+
+        .nav-button:hover {
+            color: var(--gold-medium);
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    <div class="h-20"></div>
+
+    <!-- Fotoğraf Hero -->
+    <div class="photo-hero">
+        <img src="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg" 
+             alt="Premium Çelik Kapı" 
+             class="w-full h-full object-cover">
+        <div class="photo-overlay">
+            <div class="container mx-auto px-4">
+                <span class="photo-category">ÇELİK KAPI</span>
+                <h1 class="photo-title">Premium Çelik Kapı</h1>
+                <div class="photo-meta">
+                    <span><i class="far fa-calendar"></i>22 Ocak 2024</span>
+                    <span><i class="far fa-eye"></i>1.234 görüntülenme</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fotoğraf İçeriği -->
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="photo-description">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-2">Özel Tasarım Serisi</h2>
+                        <p class="text-gray-600">Premium serimizden özel tasarım çelik kapı modelimiz.</p>
+                    </div>
+                    <button class="share-button">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Paylaş</span>
+                    </button>
+                </div>
+
+                <div class="prose max-w-none">
+                    <p class="text-gray-700 mb-6">
+                        Premium çelik kapı serimizden özel tasarım modelimiz, modern çizgileri ve yüksek güvenlik özellikleriyle öne çıkıyor. 
+                        Özel kaplama teknolojisi ile üretilen bu model, hem estetik görünümü hem de dayanıklılığı ile dikkat çekiyor.
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Yüksek güvenlikli çelik gövde</li>
+                        <li>Özel tasarım dış kaplama</li>
+                        <li>Ses ve ısı yalıtımı</li>
+                        <li>Anti-bakteriyel yüzey</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fotoğraf Navigasyonu -->
+            <div class="photo-navigation">
+                <a href="#" class="nav-button">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Önceki Fotoğraf</span>
+                </a>
+                <a href="#" class="nav-button">
+                    <span>Sonraki Fotoğraf</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- İlgili Fotoğraflar -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8">İlgili Fotoğraflar</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <a href="#" class="related-photo aspect-square">
+                        <img src="https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg" 
+                             alt="Modern Laminat">
+                        <div class="related-overlay">
+                            <div>
+                                <span class="text-sm bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm text-white">LAMİNAT</span>
+                                <h4 class="text-white text-lg font-medium mt-2">Modern Laminat</h4>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-photo aspect-square">
+                        <img src="https://images.pexels.com/photos/279648/pexels-photo-279648.jpeg" 
+                             alt="Villa Projesi">
+                        <div class="related-overlay">
+                            <div>
+                                <span class="text-sm bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm text-white">PROJE</span>
+                                <h4 class="text-white text-lg font-medium mt-2">Villa Projesi</h4>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="related-photo aspect-square">
+                        <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" 
+                             alt="ASKON Showroom">
+                        <div class="related-overlay">
+                            <div>
+                                <span class="text-sm bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm text-white">SHOWROOM</span>
+                                <h4 class="text-white text-lg font-medium mt-2">ASKON Showroom</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 
