@@ -83,6 +83,8 @@ git push origin feature/yeni-ozellik
 
 4. Bir Pull Request oluşturun
 
+## 👀 Canlı Demo
+https://askon-web.onrender.com/
 
 ## 📄 Lisans
 
@@ -95,7 +97,6 @@ Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için [LICEN
 ## 📞 İletişim
 
 Sorularınız için:
-- Email: [iletisim@askon.com.tr](mailto:iletisim@askon.com.tr)
 - GitHub: [@gorkemoa](https://github.com/gorkemoa)
 
 ## 🙏 Teşekkürler
