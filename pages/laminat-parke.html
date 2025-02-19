@@ -51,6 +51,30 @@
             height: 3px;
             background-color: var(--accent-color);
         }
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(3px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(3px);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -59,24 +83,23 @@
 
 
     <!-- Hero Bölümü -->
-    <section class="relative h-[60vh] flex items-center justify-center">
-        <!-- Arka plan görseli -->
+    <section class="relative h-[50vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full">
-            <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+            <img src="https://images.pexels.com/photos/301378/pexels-photo-301378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="Laminat Parke Arka Plan" 
                  class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="absolute inset-0 hero-overlay">
+            </div>
         </div>
         
         <!-- Hero İçeriği -->
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-6xl font-light mb-6 text-white tracking-wide">
-                LAMİNAT PARKE
-            </h1>
-            <div class="w-24 h-1 bg-[var(--accent-color)] mx-auto mb-6"></div>
-            <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
-                Doğal ahşap serisi, modern tasarım serisi ve klasik koleksiyonumuzla yaşam alanlarınıza şıklık ve dayanıklılık katın. ASKON kalitesiyle evinizin zeminleri artık daha özel.
+        <div class="container relative z-10 text-center py-8">
+            <h1 class="section-title mb-4">LAMİNAT PARKE</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-0"></div>
+            <p class="section-description">
+                 ASKON kalitesiyle evinizin zeminleri artık daha özel.
             </p>
+              <!--  
             <nav class="mt-8" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2 bg-black bg-opacity-30 px-4 py-2 rounded-full">
                     <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Ana Sayfa</a></li>
@@ -84,37 +107,50 @@
                     <li class="text-white">Laminat Parke</li>
                 </ol>
             </nav>
+            -->
         </div>
     </section>
 
-    <!-- Filtreler ve Arama -->
-    <section class="pt-24 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap items-center justify-between gap-4">
-                <!-- Arama -->
-                <div class="w-full md:w-auto">
-                    <input type="text" placeholder="Ürün ara..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
-                </div>
-                <!-- Filtreler -->
-                <div class="flex flex-wrap gap-4">
-                    <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
-                        <option value="">Seri Seçin</option>
-                        <option value="dogal">Doğal Ahşap Serisi</option>
-                        <option value="modern">Modern Tasarım Serisi</option>
-                        <option value="klasik">Klasik Koleksiyon</option>
-                    </select>
-                    <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
-                        <option value="">Fiyat Sırala</option>
-                        <option value="asc">Artan Fiyat</option>
-                        <option value="desc">Azalan Fiyat</option>
-                    </select>
-                </div>
+   <!-- Kategori Navigasyonu -->
+   <section class="py-8 bg-white shadow-sm sticky top-20 z-40">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between">
+            <!-- Arama -->
+            <div class="w-52">
+                <input type="text" placeholder="Ürün ara..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
             </div>
-        </div>
-    </section>
+            
+            <!-- Kategoriler -->
+            <div class="flex gap-6 justify-center mx-auto">
+                <a href="#dogal-ahsap-serisi" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    Doğal Ahşap Serisi
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+                <a href="#modern-tasarim-serisi" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    Modern Tasarım Serisi
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+                <a href="#klasik-koleksiyon" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                    Klasik Koleksiyon
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                </a>
+            </div>
+
+            <!-- Sıralama -->
+            <div class="w-52">
+                <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
+                    <option value="">Fiyat Sırala</option>
+                    <option value="asc">Artan Fiyat</option>
+                    <option value="desc">Azalan Fiyat</option>
+                </select>
+            </div>
+        </nav>
+    </div>
+</section>
+
 
     <!-- Doğal Ahşap Serisi -->
-    <section class="py-12">
+    <section id="dogal-ahsap-serisi" class="py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Doğal Ahşap Serisi</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -182,7 +218,7 @@
     </section>
 
     <!-- Modern Tasarım Serisi -->
-    <section class="py-12 bg-gray-100">
+    <section id="modern-tasarim-serisi" class="py-12 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Modern Tasarım Serisi</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -230,7 +266,7 @@
     </section>
 
     <!-- Klasik Koleksiyon -->
-    <section class="py-12">
+    <section id="klasik-koleksiyon" class="py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Klasik Koleksiyon</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -295,6 +331,21 @@
             .then(data => {
                 document.querySelector('#footer-container').innerHTML = data;
             });
+
+        // Smooth scroll için kategori linklerini seç
+        document.querySelectorAll('.category-nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                const navHeight = document.querySelector('.sticky').offsetHeight;
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - navHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
 
         // Tüm ürünleri seç
         const productCards = document.querySelectorAll('.product-card');

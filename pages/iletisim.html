@@ -238,9 +238,10 @@
 <body>
     <!-- Header -->
     <div id="header-container"></div>
+    <section id="hero" class="mt-20">
 
     <!-- Hero Bölümü -->
-    <section class="relative h-[60vh] flex items-center justify-center">
+    <section class="relative h-[50vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full">
             <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3" 
                  alt="İletişim Arka Plan" 
@@ -248,17 +249,17 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="section-title mb-8 floating-element">İLETİŞİM</h1>
-            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-8"></div>
-            <p class="section-description max-w-3xl mx-auto">
+        <div class="container relative z-10 text-center py-8">
+            <h1 class="section-title mb-4">İLETİŞİM</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-0"></div>
+            <p class="section-description">
                 Sorularınız ve talepleriniz için bizimle iletişime geçebilirsiniz.
             </p>
         </div>
     </section>
 
     <!-- İletişim Kartları -->
-    <section class="py-20 -mt-24 relative z-20">
+    <section class="py-20 -mt-14 relative z-20">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Telefon -->
@@ -319,30 +320,30 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <!-- İletişim Formu -->
-                <div class="contact-form">
-                    <h2 class="text-3xl font-semibold text-gray-900 mb-8">Bize Ulaşın</h2>
+                <div class="contact-form h-[450px] overflow-y-auto">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Bize Ulaşın</h2>
                     <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label>Adınız</label>
-                                <input type="text" class="w-full px-4 py-3" required>
+                                <input type="text" class="w-full px-4 py-2" required>
                             </div>
                             <div>
                                 <label>Soyadınız</label>
-                                <input type="text" class="w-full px-4 py-3" required>
+                                <input type="text" class="w-full px-4 py-2" required>
                             </div>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-4">
                             <label>E-posta</label>
-                            <input type="email" class="w-full px-4 py-3" required>
+                            <input type="email" class="w-full px-4 py-2" required>
+                        </div>
+                        <div class="mb-4">
+                            <label>Telefon</label>
+                            <input type="tel" class="w-full px-4 py-2" required>
                         </div>
                         <div class="mb-6">
-                            <label>Telefon</label>
-                            <input type="tel" class="w-full px-4 py-3" required>
-                        </div>
-                        <div class="mb-8">
                             <label>Mesajınız</label>
-                            <textarea rows="4" class="w-full px-4 py-3" required></textarea>
+                            <textarea rows="3" class="w-full px-4 py-2" required></textarea>
                         </div>
                         <button type="submit" class="submit-button w-full md:w-auto">
                             Gönder

@@ -74,30 +74,52 @@
             border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(196, 164, 124, 0.1);
         }
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <div id="header-container"></div>
+    <section id="hero" class="mt-20">
 
     <!-- Hero Bölümü -->
-    <section class="relative h-[70vh] flex items-center justify-center">
-        <!-- Arka plan görseli -->
+    <section class="relative h-[50vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full">
             <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3" 
                  alt="Satış Noktaları Arka Plan" 
                  class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"></div>
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
+       
         
-        <!-- Hero İçeriği -->
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="section-title mb-8">
-                SATIŞ NOKTALARI
-            </h1>
-            <div class="w-32 h-1 bg-[var(--accent-color)] mx-auto mb-8"></div>
-            <p class="section-description max-w-3xl mx-auto mb-12">
-                Türkiye'nin dört bir yanında hizmetinizdeyiz. Size en yakın ASKON satış noktasını keşfedin.
+        <div class="container relative z-10 text-center py-8">
+            <h1 class="section-title mb-4">SATIŞ NOKTALARI</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-0"></div>
+            <p class="section-description">
+                Türkiye'nin dört bir yanında hizmetinizdeyiz.
             </p>
         </div>
     </section>

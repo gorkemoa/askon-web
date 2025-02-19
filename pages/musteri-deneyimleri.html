@@ -27,7 +27,7 @@
             font-weight: var(--font-bold);
             color: var(--neutral-100);
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
             display: inline-block;
             padding: 0.5rem 2rem;
@@ -39,11 +39,10 @@
             font-size: var(--h3-font-size);
             color: var(--neutral-100);
             line-height: 1.7;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             max-width: 800px;
             margin: 0 auto;
             padding: 1.5rem 2rem;
-            background: rgba(26, 54, 93, 0.8);
             border-radius: 8px;
             backdrop-filter: blur(8px);
         }
@@ -224,7 +223,7 @@
     <div id="header-container"></div>
 
     <!-- Hero Bölümü -->
-    <section class="relative h-[70vh] flex items-center justify-center">
+    <section class="relative h-[50vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full">
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3" 
                  alt="Müşteri Deneyimleri Arka Plan" 
@@ -232,56 +231,20 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="section-title mb-8">MÜŞTERİ DENEYİMLERİ</h1>
-            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-8"></div>
-            <p class="section-description max-w-3xl mx-auto">
+        <div class="container relative z-10 text-center py-8">
+            <h1 class="section-title mb-4">MÜŞTERİ DENEYİMLERİ</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-0"></div>
+            <p class="section-description">
                 Müşterilerimizin ASKON deneyimleri ve değerli yorumları.
             </p>
         </div>
     </section>
 
-    <!-- Öne Çıkan Deneyim -->
-    <section class="py-16 -mt-20 relative z-20">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="featured-testimonial p-8 md:p-12">
-                    <span class="featured-badge">ÖNE ÇIKAN</span>
-                    <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <div class="flex-shrink-0">
-                            <div class="customer-image w-20 h-20 md:w-32 md:h-32">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" 
-                                     alt="Ahmet Yılmaz"
-                                     class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="flex-grow">
-                            <div class="customer-info mb-4">
-                                <h3 class="customer-name text-xl md:text-2xl">Ahmet Yılmaz</h3>
-                                <p class="customer-project">Villa Projesi, İstanbul</p>
-                            </div>
-                            <div class="rating mb-6">
-                                <span class="star"><i class="fas fa-star"></i></span>
-                                <span class="star"><i class="fas fa-star"></i></span>
-                                <span class="star"><i class="fas fa-star"></i></span>
-                                <span class="star"><i class="fas fa-star"></i></span>
-                                <span class="star"><i class="fas fa-star"></i></span>
-                            </div>
-                            <p class="testimonial-text text-lg md:text-xl">
-                                "ASKON ile çalışmak gerçekten muhteşem bir deneyimdi. Villa projemizde kullanılan tüm ürünler, 
-                                hem kalite hem de estetik açıdan beklentilerimizin üzerinde. Özellikle montaj ekibinin 
-                                profesyonelliği ve titizliği takdire şayan. Kesinlikle tavsiye ediyorum!"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Filtreler -->
-    <section class="pb-12">
-        <div class="container mx-auto px-4">
+    <section class="py-10 pb-12">
+        <div class="container mx-auto px-24">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-4">
                     <button class="filter-button active px-6 py-3 rounded-full text-sm font-medium">

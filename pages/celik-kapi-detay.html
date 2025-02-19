@@ -226,6 +226,78 @@
         </div>
     </div>
 
+    <!-- Önerilen Ürünler Bölümü -->
+    <div class="container mx-auto px-4 py-16 border-t border-gray-200 mt-16">
+        <h2 class="text-3xl font-light mb-8">Bu Ürünü Seçen Müşterilerimizin Tercihleri</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Laminat Parke Önerisi -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                <a href="/pages/laminat-parke-detay.html" class="block">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/269063/pexels-photo-269063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                             alt="Premium Laminat Parke" 
+                             class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded">
+                            Çok Satan
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Premium Laminat Parke</h3>
+                        <p class="text-gray-600 mb-4">8mm Kalınlık, AC4 Dayanıklılık</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-semibold text-[var(--primary-color)]">₺289/m²</span>
+                            <span class="text-sm text-[var(--accent-color)]">Detayları Gör →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Çelik Gövde Önerisi -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                <a href="/pages/celik-govde.html" class="block">
+                    <div class="relative overflow-hidden">
+                        <img src="https://www.kapigetir.com/assets/images/celik/celik-kapi-anka.webp" 
+                             alt="Ultra Güvenlik Çelik Gövde" 
+                             class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded">
+                            Yeni Ürün
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Ultra Güvenlik Çelik Gövde</h3>
+                        <p class="text-gray-600 mb-4">1.5mm Çelik, Özel Güvenlik Sistemi</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-semibold text-[var(--primary-color)]">₺4.999</span>
+                            <span class="text-sm text-[var(--accent-color)]">Detayları Gör →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kilit Sistemi Önerisi -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                <a href="#" class="block">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                             alt="Akıllı Kilit Sistemi" 
+                             class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-[var(--accent-color)] text-white px-3 py-1 rounded">
+                            Önerilen
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Akıllı Kilit Sistemi</h3>
+                        <p class="text-gray-600 mb-4">Parmak İzi, Şifre, Kart</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-semibold text-[var(--primary-color)]">₺2.499</span>
+                            <span class="text-sm text-[var(--accent-color)]">Detayları Gör →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Header'ı yükle
         fetch('/layouts/header.html')

@@ -6,6 +6,7 @@
     <title>Çelik Gövde | ASKON</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         :root {
             --primary-color: #1a365d;
@@ -50,69 +51,103 @@
             height: 3px;
             background-color: var(--accent-color);
         }
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <div id="header-container"></div>
 
+
     <!-- Hero Bölümü -->
-    <section class="relative h-[60vh] flex items-center justify-center">
-        <!-- Arka plan görseli -->
+    <section class="relative h-[50vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full">
-            <img src="https://images.unsplash.com/photo-1622372738946-62e02505feb3?ixlib=rb-4.0.3" 
+            <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
                  alt="Çelik Gövde Arka Plan" 
                  class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="absolute inset-0 hero-overlay">
+            </div>
         </div>
         
         <!-- Hero İçeriği -->
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-6xl font-light mb-6 text-white tracking-wide">
-                ÇELİK GÖVDE SİSTEMLERİ
-            </h1>
-            <div class="w-24 h-1 bg-[var(--accent-color)] mx-auto mb-6"></div>
-            <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
-                Güvenlik ve dayanıklılığın mükemmel uyumu. Premium, standart ve endüstriyel serileriyle her ihtiyaca uygun çelik gövde sistemleri ASKON güvencesiyle.
+        <div class="container relative z-10 text-center py-8">
+            <h1 class="section-title mb-4">ÇELİK GÖVDE</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-0"></div>
+            <p class="section-description">
+                Güvenlik ve dayanıklılığın mükemmel uyumu.
             </p>
-            <nav class="mt-8" aria-label="Breadcrumb">
+            <!-- <nav aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-2 bg-black bg-opacity-30 px-4 py-2 rounded-full">
                     <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Ana Sayfa</a></li>
                     <li class="text-gray-300">/</li>
                     <li class="text-white">Çelik Gövde</li>
                 </ol>
-            </nav>
+            </nav> -->  
         </div>
     </section>
 
-    <!-- Filtreler ve Arama -->
-    <section class="pt-24 pb-8">
+    <!-- Kategori Navigasyonu -->
+    <section class="py-8 bg-white shadow-sm sticky top-20 z-40">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap items-center justify-between gap-4">
+            <nav class="flex items-center justify-between">
                 <!-- Arama -->
-                <div class="w-full md:w-auto">
+                <div class="w-52">
                     <input type="text" placeholder="Ürün ara..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
                 </div>
-                <!-- Filtreler -->
-                <div class="flex flex-wrap gap-4">
-                    <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
-                        <option value="">Kategori Seçin</option>
-                        <option value="premium">Premium Seri</option>
-                        <option value="standart">Standart Seri</option>
-                        <option value="endustriyel">Endüstriyel Seri</option>
-                    </select>
+                
+                <!-- Kategoriler -->
+                <div class="flex gap-6 justify-center mx-auto">
+                    <a href="#premium-seri" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                        Premium Seri
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                    </a>
+                    <a href="#standart-seri" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                        Standart Seri
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                    </a>
+                    <a href="#endustriyel-seri" class="category-nav-item relative px-6 py-2 text-gray-700 hover:text-[var(--accent-color)] transition-colors">
+                        Endüstriyel Seri
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-color)] transform scale-x-0 transition-transform origin-left hover:scale-x-100"></span>
+                    </a>
+                </div>
+
+                <!-- Sıralama -->
+                <div class="w-52">
                     <select class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]">
                         <option value="">Fiyat Sırala</option>
                         <option value="asc">Artan Fiyat</option>
                         <option value="desc">Azalan Fiyat</option>
                     </select>
                 </div>
-            </div>
+            </nav>
         </div>
     </section>
 
     <!-- Premium Seri -->
-    <section class="py-12">
+    <section id="premium-seri" class="py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Premium Seri</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -160,7 +195,7 @@
     </section>
 
     <!-- Standart Seri -->
-    <section class="py-12 bg-gray-100">
+    <section id="standart-seri" class="py-12 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Standart Seri</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -208,7 +243,7 @@
     </section>
 
     <!-- Endüstriyel Seri -->
-    <section class="py-12">
+    <section id="endustriyel-seri" class="py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-light text-gray-900 category-title">Endüstriyel Seri</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -307,6 +342,8 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <div id="footer-container"></div>
     <script>
         // Header'ı yükle
         fetch('/layouts/header.html')
@@ -315,6 +352,27 @@
                 document.querySelector('#header-container').innerHTML = data;
             });
 
+        // Smooth scroll için kategori linklerini seç
+        document.querySelectorAll('.category-nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                const navHeight = document.querySelector('.sticky').offsetHeight;
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - navHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
         // Tüm ürünleri seç
         const productCards = document.querySelectorAll('.product-card');
         const searchInput = document.querySelector('input[placeholder="Ürün ara..."]');
