@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Deneyimleri | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+            --gold-light: #f5e6cc;
+            --gold-medium: #e2b13c;
+            --gold-dark: #b38728;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: #fdfbf7;
+        }
+
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            background: rgba(26, 54, 93, 0.8);
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .testimonial-card {
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gold-light);
+            background: white;
+            box-shadow: 0 4px 20px rgba(226, 177, 60, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold-medium), var(--gold-dark));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(226, 177, 60, 0.15);
+            border-color: var(--gold-medium);
+        }
+
+        .testimonial-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(226, 177, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .quote-icon {
+            transform: rotate(15deg);
+        }
+
+        .quote-icon i {
+            color: white;
+            font-size: 1.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .filter-button {
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+            background: white;
+            color: var(--primary-color);
+            font-weight: var(--font-medium);
+            box-shadow: 0 4px 15px rgba(226, 177, 60, 0.1);
+        }
+
+        .filter-button.active {
+            background: linear-gradient(135deg, var(--gold-medium), var(--gold-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(226, 177, 60, 0.2);
+        }
+
+        .filter-button:hover:not(.active) {
+            border-color: var(--gold-medium);
+            color: var(--gold-medium);
+            transform: translateY(-2px);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(226, 177, 60, 0.9), rgba(26, 54, 93, 0.8));
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .star {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            display: inline-flex;
+            color: var(--gold-medium);
+        }
+
+        .star i {
+            filter: drop-shadow(0 2px 4px rgba(226, 177, 60, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover .star i {
+            transform: scale(1.1);
+        }
+
+        .customer-image {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold-light);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .customer-image {
+            border-color: var(--gold-medium);
+            transform: scale(1.05);
+        }
+
+        .customer-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .customer-name {
+            color: var(--primary-color);
+            font-weight: var(--font-semibold);
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .customer-project {
+            color: var(--gold-medium);
+            font-size: 0.875rem;
+            font-weight: var(--font-medium);
+        }
+
+        .testimonial-text {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-testimonial {
+            position: relative;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(226, 177, 60, 0.15);
+            margin-top: -5rem;
+            z-index: 20;
+            border: 1px solid var(--gold-light);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold-medium);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(226, 177, 60, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Bölümü -->
+    <section class="relative h-[70vh] flex items-center justify-center">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3" 
+                 alt="Müşteri Deneyimleri Arka Plan" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="section-title mb-8">MÜŞTERİ DENEYİMLERİ</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-8"></div>
+            <p class="section-description max-w-3xl mx-auto">
+                Müşterilerimizin ASKON deneyimleri ve değerli yorumları.
+            </p>
+        </div>
+    </section>
+
+    <!-- Öne Çıkan Deneyim -->
+    <section class="py-16 -mt-20 relative z-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="featured-testimonial p-8 md:p-12">
+                    <span class="featured-badge">ÖNE ÇIKAN</span>
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-shrink-0">
+                            <div class="customer-image w-20 h-20 md:w-32 md:h-32">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                     alt="Ahmet Yılmaz"
+                                     class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="customer-info mb-4">
+                                <h3 class="customer-name text-xl md:text-2xl">Ahmet Yılmaz</h3>
+                                <p class="customer-project">Villa Projesi, İstanbul</p>
+                            </div>
+                            <div class="rating mb-6">
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                                <span class="star"><i class="fas fa-star"></i></span>
+                            </div>
+                            <p class="testimonial-text text-lg md:text-xl">
+                                "ASKON ile çalışmak gerçekten muhteşem bir deneyimdi. Villa projemizde kullanılan tüm ürünler, 
+                                hem kalite hem de estetik açıdan beklentilerimizin üzerinde. Özellikle montaj ekibinin 
+                                profesyonelliği ve titizliği takdire şayan. Kesinlikle tavsiye ediyorum!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtreler -->
+    <section class="pb-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="filter-button active px-6 py-3 rounded-full text-sm font-medium">
+                        Tümü
+                    </button>
+                    <button class="filter-button px-6 py-3 rounded-full text-sm font-medium">
+                        Çelik Kapı
+                    </button>
+                    <button class="filter-button px-6 py-3 rounded-full text-sm font-medium">
+                        Laminat Parke
+                    </button>
+                    <button class="filter-button px-6 py-3 rounded-full text-sm font-medium">
+                        Villa Projeleri
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deneyim Kartları -->
+    <section class="pb-24">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Deneyim Kartı 1 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                     alt="Ayşe Demir" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Ayşe Demir</h3>
+                                <p class="customer-project">Laminat Parke, Ankara</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Laminat parke seçiminde ve uygulamasında gösterdikleri profesyonellik için teşekkür ederiz. 
+                            Evimizin görünümü tamamen değişti."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Deneyim Kartı 2 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" 
+                                     alt="Mehmet Kaya" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Mehmet Kaya</h3>
+                                <p class="customer-project">Çelik Kapı, İzmir</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Güvenlik konusundaki hassasiyetimizi çok iyi anladılar ve bize en uygun çözümü sundular. 
+                            Montaj ekibi çok titiz çalıştı."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Deneyim Kartı 3 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/women/28.jpg" 
+                                     alt="Zeynep Yıldız" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Zeynep Yıldız</h3>
+                                <p class="customer-project">Villa Projesi, Antalya</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Villamızın tüm kapıları ve parkelerinde ASKON'u tercih ettik. Sonuç mükemmel oldu. 
+                            Özellikle danışmanımızın ilgisi için teşekkürler."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Deneyim Kartı 4 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" 
+                                     alt="Ali Öztürk" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Ali Öztürk</h3>
+                                <p class="customer-project">Laminat Parke, Bursa</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Parke seçiminde gösterdikleri profesyonel yaklaşım ve sundukları alternatifler çok etkileyiciydi. 
+                            Uygulama sonrası temizliği de takdire şayan."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Deneyim Kartı 5 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                                     alt="Selin Arslan" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Selin Arslan</h3>
+                                <p class="customer-project">Çelik Kapı, İstanbul</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Modern tasarımları ve kaliteli işçilikleriyle beklentilerimizin üzerinde bir sonuç aldık. 
+                            Satış sonrası destekleri de çok iyi."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+
+                <!-- Deneyim Kartı 6 -->
+                <div class="testimonial-card rounded-xl p-8">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="customer-image">
+                                <img src="https://randomuser.me/api/portraits/men/92.jpg" 
+                                     alt="Burak Şahin" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="customer-info">
+                                <h3 class="customer-name">Burak Şahin</h3>
+                                <p class="customer-project">Villa Projesi, Muğla</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">
+                            "Projemizin başından sonuna kadar profesyonel bir yaklaşım sergilediler. 
+                            Ürün kalitesi ve hizmet anlayışları gerçekten üst düzey."
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                        <span class="star"><i class="fas fa-star"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+
+        // Filtreleme işlevselliği
+        const filterButtons = document.querySelectorAll('.filter-button');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SL 01 Villa Kapısı | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .zoom-gallery img {
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+        .zoom-gallery img:hover {
+            transform: scale(1.05);
+        }
+        .color-option.selected {
+            border: 2px solid var(--accent-color);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Ürün Detay Bölümü -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+            <!-- Sol Taraf - Ürün Görselleri -->
+            <div class="lg:w-2/3">
+                <!-- Ana Görsel -->
+                <div class="mb-6 rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL01.webp" 
+                         alt="SL 01 Villa Kapısı" 
+                         class="w-full h-[500px] object-cover">
+                </div>
+                <!-- Küçük Görseller -->
+                <div class="grid grid-cols-4 gap-4 zoom-gallery">
+                    <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL01.webp" alt="Detay 1" class="w-full h-32 object-cover rounded-lg cursor-pointer shadow-md">
+                    <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL04.webp" alt="Detay 2" class="w-full h-32 object-cover rounded-lg cursor-pointer shadow-md">
+                    <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/SL03.webp" alt="Detay 3" class="w-full h-32 object-cover rounded-lg cursor-pointer shadow-md">
+                    <img src="https://www.surcelikkapi.com/wp-content/uploads/2023/07/UNIVERSE.webp" alt="Detay 4" class="w-full h-32 object-cover rounded-lg cursor-pointer shadow-md">
+                </div>
+            </div>
+
+            <!-- Sağ Taraf - Ürün Bilgileri -->
+            <div class="lg:w-1/3">
+                <nav class="mb-4" aria-label="Breadcrumb">
+                    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                        <li><a href="/" class="hover:text-[var(--accent-color)]">Ana Sayfa</a></li>
+                        <li>/</li>
+                        <li><a href="/pages/celik-kapilar.html" class="hover:text-[var(--accent-color)]">Çelik Kapılar</a></li>
+                        <li>/</li>
+                        <li class="text-[var(--accent-color)]">SL 01</li>
+                    </ol>
+                </nav>
+
+                <h1 class="text-4xl font-light mb-4">SL 01 Villa Kapısı</h1>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-3xl font-semibold text-[var(--primary-color)]">₺14.999</span>
+                    <span class="text-lg text-gray-500 line-through">₺17.999</span>
+                </div>
+
+                <!-- Renk Seçenekleri -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium mb-3">Renk Seçenekleri</h3>
+                    <div class="flex gap-4">
+                        <div class="color-option w-12 h-12 rounded-full bg-[#8B4513] cursor-pointer border-2 border-transparent" data-color="Kahverengi"></div>
+                        <div class="color-option w-12 h-12 rounded-full bg-[#1a1a1a] cursor-pointer border-2 border-transparent" data-color="Siyah"></div>
+                        <div class="color-option w-12 h-12 rounded-full bg-[#CD7F32] cursor-pointer border-2 border-transparent" data-color="Bronz"></div>
+                        <div class="color-option w-12 h-12 rounded-full bg-[#C0C0C0] cursor-pointer border-2 border-transparent" data-color="Gümüş"></div>
+                    </div>
+                </div>
+
+                <!-- Özellikler -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium mb-3">Temel Özellikler</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Çelik Konstrüksiyon
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Çift Güvenlik Kilidi
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Ses ve Isı Yalıtımı
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[var(--accent-color)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            10 Yıl Garanti
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sipariş Butonu -->
+                <button class="w-full bg-[var(--accent-color)] text-white py-4 rounded-lg mb-6 hover:bg-[var(--primary-color)] transition-colors duration-300">
+                    Sipariş Ver
+                </button>
+
+                <!-- Whatsapp Butonu -->
+                <a href="https://wa.me/905555555555" target="_blank" 
+                   class="flex items-center justify-center gap-2 w-full bg-green-500 text-white py-4 rounded-lg hover:bg-green-600 transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.423-.101.827z"/>
+                    </svg>
+                    WhatsApp ile İletişim
+                </a>
+            </div>
+        </div>
+
+        <!-- Detay Sekmeleri -->
+        <div class="mt-16">
+            <div class="border-b border-gray-200">
+                <nav class="flex gap-8">
+                    <button class="tab-button px-4 py-3 text-lg font-medium border-b-2 border-[var(--accent-color)]" data-tab="teknik">
+                        Teknik Özellikler
+                    </button>
+                    <button class="tab-button px-4 py-3 text-lg font-medium border-b-2 border-transparent" data-tab="olcu">
+                        Ölçü Bilgileri
+                    </button>
+                    <button class="tab-button px-4 py-3 text-lg font-medium border-b-2 border-transparent" data-tab="montaj">
+                        Montaj ve Bakım
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab İçerikleri -->
+            <div class="py-8">
+                <!-- Teknik Özellikler -->
+                <div id="teknik" class="tab-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Güvenlik Özellikleri</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>• Çift güvenlik kilidi sistemi</li>
+                                <li>• 12 nokta kilitleme mekanizması</li>
+                                <li>• Çelik güvenlik karşılığı</li>
+                                <li>• Anti-kopya anahtar sistemi</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Malzeme ve Yapı</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>• 1.5mm çelik konstrüksiyon</li>
+                                <li>• Özel ses ve ısı yalıtım malzemesi</li>
+                                <li>• Elektrostatik fırın boya</li>
+                                <li>• Paslanmaz çelik aksesuarlar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ölçü Bilgileri -->
+                <div id="olcu" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Standart Ölçüler</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>• Genişlik: 100 cm</li>
+                                <li>• Yükseklik: 210 cm</li>
+                                <li>• Kasa Derinliği: 16 cm</li>
+                                <li>• Kanat Kalınlığı: 6 cm</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Özel Ölçü</h3>
+                            <p class="text-gray-600 mb-4">
+                                Özel ölçü talepleriniz için lütfen bizimle iletişime geçin. Projenize özel çözümler sunabiliriz.
+                            </p>
+                            <button class="bg-[var(--primary-color)] text-white px-6 py-2 rounded hover:bg-[var(--accent-color)] transition-colors">
+                                Ölçü Teklifi Al
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Montaj ve Bakım -->
+                <div id="montaj" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Montaj Hizmeti</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>• Ücretsiz keşif hizmeti</li>
+                                <li>• Profesyonel montaj ekibi</li>
+                                <li>• Aynı gün montaj imkanı</li>
+                                <li>• Temiz ve düzenli çalışma</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-medium mb-4">Bakım Önerileri</h3>
+                            <ul class="space-y-3 text-gray-600">
+                                <li>• 6 ayda bir menteşe yağlaması</li>
+                                <li>• Yılda bir kilit bakımı</li>
+                                <li>• Nemli bezle silme</li>
+                                <li>• Aşındırıcı temizlik malzemesi kullanmama</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Renk seçimi
+        const colorOptions = document.querySelectorAll('.color-option');
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Tüm seçimleri kaldır
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                // Seçilen rengi işaretle
+                option.classList.add('selected');
+            });
+        });
+
+        // Tab kontrolü
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Tüm tab butonlarını pasif yap
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('border-[var(--accent-color)]');
+                    btn.classList.add('border-transparent');
+                });
+
+                // Tıklanan butonu aktif yap
+                button.classList.remove('border-transparent');
+                button.classList.add('border-[var(--accent-color)]');
+
+                // İlgili içeriği göster
+                const tabId = button.getAttribute('data-tab');
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === tabId) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Görsel galerisi
+        const galleryImages = document.querySelectorAll('.zoom-gallery img');
+        const mainImage = document.querySelector('.lg\\:w-2\\/3 img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                mainImage.src = img.src;
+                mainImage.alt = img.alt;
+            });
+        });
+    </script>
+</body>
+</html> 

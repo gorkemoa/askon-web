@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+            --gold-light: #f5e6cc;
+            --gold-medium: #e2b13c;
+            --gold-dark: #b38728;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            background-color: #fdfbf7;
+        }
+
+        #header-container {
+            position: relative;
+            z-index: var(--z-fixed);
+        }
+
+        .blog-card {
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gold-light);
+            background: var(--neutral-100);
+            box-shadow: 0 4px 20px rgba(226, 177, 60, 0.08);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(226, 177, 60, 0.15);
+            border-color: var(--gold-medium);
+        }
+
+        .blog-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gold-medium);
+            color: var(--neutral-100);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 10px rgba(226, 177, 60, 0.2);
+        }
+
+        .section-title {
+            font-size: var(--biggest-font-size);
+            font-weight: var(--font-bold);
+            color: var(--neutral-100);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .section-description {
+            font-size: var(--h3-font-size);
+            color: var(--neutral-100);
+            line-height: 1.7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .blog-title {
+            color: var(--primary-color);
+            font-weight: var(--font-semibold);
+            transition: color var(--transition-normal);
+            font-size: 1.25rem;
+        }
+
+        .blog-card:hover .blog-title {
+            color: var(--gold-medium);
+        }
+
+        .blog-meta {
+            color: var(--text-color-light);
+            font-size: var(--small-font-size);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .blog-meta i {
+            color: var(--gold-medium);
+        }
+
+        .read-more {
+            color: var(--gold-medium);
+            font-weight: var(--font-medium);
+            transition: all var(--transition-normal);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gold-light);
+            border-radius: 50px;
+        }
+
+        .read-more:hover {
+            background-color: var(--gold-medium);
+            color: var(--neutral-100);
+            border-color: var(--gold-medium);
+            gap: 1rem;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(226, 177, 60, 0.9), rgba(26, 54, 93, 0.8));
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Bölümü -->
+    <section class="relative h-[70vh] flex items-center justify-center">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3" 
+                 alt="Blog Arka Plan" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="section-title mb-8">BLOG</h1>
+            <div class="w-32 h-0.5 bg-[var(--gold-light)] mx-auto mb-8"></div>
+            <p class="section-description max-w-3xl mx-auto">
+                En son haberler, ürün incelemeleri ve sektörel gelişmeler hakkında bilgi edinin.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Kartları -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Kartı 1 -->
+                <div class="blog-card rounded-xl overflow-hidden">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg" alt="Çelik Kapı Seçimi">
+                        <span class="blog-category">REHBER</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="blog-meta mb-4">
+                            <span><i class="far fa-calendar"></i>22 Ocak 2024</span>
+                            <span><i class="far fa-clock"></i>5 dk okuma</span>
+                        </div>
+                        <h3 class="blog-title mb-4">Çelik Kapı Seçim Rehberi</h3>
+                        <p class="text-gray-600 mb-6">Güvenliğiniz için doğru çelik kapı seçiminin püf noktaları ve dikkat edilmesi gereken önemli detaylar.</p>
+                        <a href="/pages/blog-detay.html" class="read-more">
+                            Devamını Oku 
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Kartı 2 -->
+                <div class="blog-card rounded-xl overflow-hidden">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg" alt="Laminat Parke Bakımı">
+                        <span class="blog-category">BAKIM</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="blog-meta mb-4">
+                            <span><i class="far fa-calendar"></i>20 Ocak 2024</span>
+                            <span><i class="far fa-clock"></i>4 dk okuma</span>
+                        </div>
+                        <h3 class="blog-title mb-4">Laminat Parke Bakım Rehberi</h3>
+                        <p class="text-gray-600 mb-6">Laminat parkenizin ömrünü uzatmak için profesyonel bakım ipuçları ve düzenli temizlik önerileri.</p>
+                        <a href="#" class="read-more">
+                            Devamını Oku 
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Kartı 3 -->
+                <div class="blog-card rounded-xl overflow-hidden">
+                    <div class="blog-image">
+                        <img src="https://images.pexels.com/photos/279648/pexels-photo-279648.jpeg" alt="Güvenlik Sistemleri">
+                        <span class="blog-category">TEKNOLOJİ</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="blog-meta mb-4">
+                            <span><i class="far fa-calendar"></i>18 Ocak 2024</span>
+                            <span><i class="far fa-clock"></i>6 dk okuma</span>
+                        </div>
+                        <h3 class="blog-title mb-4">Modern Güvenlik Sistemleri</h3>
+                        <p class="text-gray-600 mb-6">Akıllı kilit sistemleri ve modern güvenlik teknolojileri ile evinizi nasıl daha güvenli hale getirebilirsiniz?</p>
+                        <a href="#" class="read-more">
+                            Devamını Oku 
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

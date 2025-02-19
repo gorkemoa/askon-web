@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            z-index: 50;
+        }
+        .group:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover {
+            background: linear-gradient(to right, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+            color: #c4a47c;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-accordion-content {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+        .mobile-accordion-content.active {
+            display: block;
+        }
+        /* Header yüksekliğini telafi etmek için */
+        .header-offset {
+            height: 80px;
+        }
+        /* Dropdown ok animasyonu */
+        .dropdown-arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+        .group:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        /* Aktif menü öğesi için alt çizgi */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #2563eb;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+            transform-origin: center;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--neutral-100);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: var(--z-fixed);
+        }
+
+        .header__container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header__logo {
+            font-size: 2rem;
+            font-weight: var(--font-bold);
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .header__logo:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav__link {
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            color: var(--neutral-700);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav__link:hover::after,
+        .nav__link.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav__link:hover,
+        .nav__link.active {
+            color: var(--secondary-color);
+        }
+
+        /* Dropdown */
+        .nav__item-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: var(--neutral-100);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav__item-dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            font-size: var(--text-sm);
+            color: var(--neutral-700);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--neutral-200);
+            color: var(--secondary-color);
+        }
+
+        /* Mobil Menü Butonu */
+        .mobile-menu-button {
+            display: none;
+            padding: 0.5rem;
+            color: var(--neutral-700);
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .nav.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--neutral-100);
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav__list {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+            
+            .nav__link {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid var(--neutral-200);
+            }
+            
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 1rem;
+                background-color: var(--neutral-200);
+                margin: 0.5rem 0;
+            }
+            
+            .dropdown-content a {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid var(--neutral-300);
+            }
+            
+            .dropdown-content a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(196, 164, 124, 0.1);
+        }
+
+        .nav-link {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, #c4a47c, #e2b13c);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(196, 164, 124, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(to right, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+        }
+
+        .mobile-menu {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+
+<header class="header fixed w-full z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-2">
+                <span class="text-2xl font-light tracking-wider text-[#c4a47c]">ASKON</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="/" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    ANASAYFA
+                </a>
+
+                <div class="group relative">
+                    <button class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 flex items-center">
+                        <span>HAKKIMIZDA</span>
+                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="py-2">
+                            <a href="/pages/hakkimizda.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">HAKKIMIZDA</a>
+                            <a href="/pages/vizyon.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">VİZYONUMUZ</a>
+                            <a href="/pages/referanslar.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">REFERANSLARIMIZ</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ürünler Dropdown -->
+                <div class="group relative">
+                    <button class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 flex items-center">
+                        <span>ÜRÜNLER</span>
+                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="py-2">
+                            <a href="/pages/celik-kapilar.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Çelik Kapılar</a>
+                            <a href="/pages/laminat-parke.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Laminat Parke</a>
+                            <a href="/pages/celik-govde.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">Çelik Gövde</a>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+                <a href="/pages/satis-noktalari.html" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    SATIŞ NOKTALARI
+                </a>
+ <!-- Kurumsal Dropdown -->
+                <div class="group relative">
+                      <button class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 flex items-center">
+                           <span>BLOG</span>
+                   <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                   </svg>
+                      </button>
+                 <div class="dropdown-menu">
+                       <div class="py-2">
+            <a href="/pages/blog.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">BLOG</a>
+            <a href="/pages/video-galeri.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">VİDEO GALERİ</a>
+            <a href="/pages/fotograf-galeri.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">FOTOĞRAF GALERİ</a>
+            <a href="/pages/musteri-deneyimleri.html" class="dropdown-item block px-4 py-2 text-sm text-gray-700 hover:text-[#c4a47c]">MÜŞTERİ DENEYİMLERİ</a>
+                      </div>
+                  </div>
+                </div>
+                <a href="/pages/iletisim.html" class="nav-link text-sm text-gray-700 hover:text-[#c4a47c] transition-colors duration-300">
+                    İLETİŞİM
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button type="button" class="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#c4a47c] focus:outline-none" id="mobile-menu-button">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 bg-white/98 backdrop-blur-lg z-[100] hidden lg:hidden overflow-y-auto" id="mobile-menu">
+        <div class="container mx-auto px-4 py-6">
+            <!-- Üst Bar -->
+            <div class="flex justify-between items-center mb-8 border-b border-gray-100 pb-4">
+                <span class="text-2xl font-light tracking-wider text-[#c4a47c]">ASKON</span>
+                <button type="button" class="p-2 text-gray-700 hover:text-[#c4a47c] focus:outline-none transition-colors" id="mobile-menu-close">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobil Navigasyon -->
+            <nav class="space-y-4">
+                <a href="/" class="mobile-nav-item block text-lg text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 py-3 border-b border-gray-50">
+                    ANASAYFA
+                </a>
+
+                <!-- Hakkımızda Accordion -->
+                <div class="mobile-accordion border-b border-gray-50">
+                    <button class="flex justify-between items-center w-full text-lg text-gray-700 hover:text-[#c4a47c] py-3">
+                        <span>HAKKIMIZDA</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pb-3">
+                        <a href="/pages/hakkimizda.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Hakkımızda</a>
+                        <a href="/pages/vizyon.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Vizyonumuz</a>
+                        <a href="/pages/referanslar.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Referanslarımız</a>
+                    </div>
+                </div>
+
+                <!-- Ürünler Accordion -->
+                <div class="mobile-accordion border-b border-gray-50">
+                    <button class="flex justify-between items-center w-full text-lg text-gray-700 hover:text-[#c4a47c] py-3">
+                        <span>ÜRÜNLER</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pb-3">
+                        <a href="/pages/celik-kapilar.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Çelik Kapılar</a>
+                        <a href="/pages/laminat-parke.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Laminat Parke</a>
+                        <a href="/pages/celik-govde.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Çelik Gövde</a>
+                    </div>
+                </div>
+
+                <a href="/pages/satis-noktalari.html" class="mobile-nav-item block text-lg text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 py-3 border-b border-gray-50">
+                    SATIŞ NOKTALARI
+                </a>
+
+                <!-- Blog Accordion -->
+                <div class="mobile-accordion border-b border-gray-50">
+                    <button class="flex justify-between items-center w-full text-lg text-gray-700 hover:text-[#c4a47c] py-3">
+                        <span>BLOG</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-accordion-content hidden pl-4 pb-3">
+                        <a href="/pages/blog.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Blog</a>
+                        <a href="/pages/video-galeri.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Video Galeri</a>
+                        <a href="/pages/fotograf-galeri.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Fotoğraf Galeri</a>
+                        <a href="/pages/musteri-deneyimleri.html" class="block py-2 text-gray-600 hover:text-[#c4a47c]">Müşteri Deneyimleri</a>
+                    </div>
+                </div>
+
+                <a href="/pages/iletisim.html" class="mobile-nav-item block text-lg text-gray-700 hover:text-[#c4a47c] transition-colors duration-300 py-3 border-b border-gray-50">
+                    İLETİŞİM
+                </a>
+            </nav>
+
+            <!-- Sosyal Medya Linkleri -->
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#" class="text-gray-500 hover:text-[#c4a47c] transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-[#c4a47c] transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-[#c4a47c] transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Header offset div -->
+<div class="header-offset"></div>
+
+<script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const accordions = document.querySelectorAll('.mobile-accordion button');
+
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+    // Accordion functionality
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const arrow = this.querySelector('svg');
+            
+            // Diğer tüm accordion içeriklerini kapat
+            accordions.forEach(otherAccordion => {
+                if (otherAccordion !== this) {
+                    const otherContent = otherAccordion.nextElementSibling;
+                    const otherArrow = otherAccordion.querySelector('svg');
+                    otherContent.classList.add('hidden');
+                    otherArrow.classList.remove('rotate-180');
+                }
+            });
+
+            // Tıklanan accordion'u aç/kapat
+            content.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        });
+    });
+
+    // Sayfa yüklendiğinde aktif menü öğesini işaretle
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const menuItems = document.querySelectorAll('.nav-link, .mobile-nav-item');
+        
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add('text-[#c4a47c]');
+            }
+        });
+    });
+</script>

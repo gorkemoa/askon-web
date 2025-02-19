@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Çelik Kapı Serisi | ASKON Video Galeri</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b13c;
+            --accent-color: #c4a47c;
+            --gold-light: #f5e6cc;
+            --gold-medium: #e2b13c;
+            --gold-dark: #b38728;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: #fdfbf7;
+        }
+
+        .video-container {
+            position: relative;
+            padding-top: 56.25%;
+            background: var(--neutral-900);
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(226, 177, 60, 0.08);
+            border: 1px solid var(--gold-light);
+        }
+
+        .video-tag {
+            background: var(--gold-light);
+            color: var(--gold-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .share-button {
+            background: var(--gold-medium);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .share-button:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .related-video {
+            transition: all var(--transition-normal);
+            border: 1px solid var(--gold-light);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .related-video:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(226, 177, 60, 0.15);
+            border-color: var(--gold-medium);
+        }
+
+        .thumbnail-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .thumbnail-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .related-video:hover .thumbnail-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 54, 93, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-overlay i {
+            color: white;
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .related-video:hover .play-overlay {
+            background: rgba(226, 177, 60, 0.3);
+        }
+
+        .related-video:hover .play-overlay i {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .video-description {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .video-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            color: var(--text-color-light);
+            font-size: 0.9rem;
+        }
+
+        .video-meta i {
+            color: var(--gold-medium);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Video Bölümü -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Ana İçerik -->
+            <div class="lg:col-span-2">
+                <!-- Video Player -->
+                <div class="video-container mb-8">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Premium Çelik Kapı Serisi" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+
+                <!-- Video Bilgileri -->
+                <div class="video-info p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="video-tag">ÜRÜN</span>
+                        <button class="share-button">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Paylaş</span>
+                        </button>
+                    </div>
+
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Premium Çelik Kapı Serisi</h1>
+                    
+                    <div class="video-meta mb-8">
+                        <span><i class="far fa-calendar mr-2"></i>22 Ocak 2024</span>
+                        <span><i class="far fa-eye mr-2"></i>1.234 görüntülenme</span>
+                        <span><i class="far fa-clock mr-2"></i>5:30</span>
+                    </div>
+
+                    <div class="video-description space-y-4">
+                        <p>
+                            Premium Çelik Kapı serimizin detaylı incelemesine hoş geldiniz. Bu videoda, en yeni modellerimizin özelliklerini, güvenlik sistemlerini ve şık tasarım detaylarını yakından inceliyoruz.
+                        </p>
+                        <p>
+                            Videoda ele alınan konular:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Yüksek güvenlikli kilit sistemleri</li>
+                            <li>Ses ve ısı yalıtım özellikleri</li>
+                            <li>Farklı renk ve doku seçenekleri</li>
+                            <li>Montaj ve kurulum süreci</li>
+                            <li>Garanti ve bakım bilgileri</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İlgili Videolar -->
+            <div class="lg:col-span-1">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6">İlgili Videolar</h3>
+                <div class="space-y-6">
+                    <!-- İlgili Video 1 -->
+                    <a href="#" class="related-video block">
+                        <div class="thumbnail-wrapper">
+                            <img src="https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg" 
+                                 alt="Profesyonel Montaj">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <span class="video-tag text-sm">MONTAJ</span>
+                            <h4 class="font-medium text-gray-900">Profesyonel Montaj</h4>
+                            <p class="text-sm text-gray-600 mt-1">3:45</p>
+                        </div>
+                    </a>
+
+                    <!-- İlgili Video 2 -->
+                    <a href="#" class="related-video block">
+                        <div class="thumbnail-wrapper">
+                            <img src="https://images.pexels.com/photos/279648/pexels-photo-279648.jpeg" 
+                                 alt="Akıllı Kilit Sistemleri">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <span class="video-tag text-sm">TEKNOLOJİ</span>
+                            <h4 class="font-medium text-gray-900">Akıllı Kilit Sistemleri</h4>
+                            <p class="text-sm text-gray-600 mt-1">4:20</p>
+                        </div>
+                    </a>
+
+                    <!-- İlgili Video 3 -->
+                    <a href="#" class="related-video block">
+                        <div class="thumbnail-wrapper">
+                            <img src="https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg" 
+                                 alt="Bakım İpuçları">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <span class="video-tag text-sm">BAKIM</span>
+                            <h4 class="font-medium text-gray-900">Bakım İpuçları</h4>
+                            <p class="text-sm text-gray-600 mt-1">6:15</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

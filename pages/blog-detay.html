@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çelik Kapı Seçim Rehberi | ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .blog-content {
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .blog-content h2 {
+            color: var(--primary-color);
+            font-size: var(--h2-font-size);
+            font-weight: var(--font-semibold);
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .blog-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            list-style: none;
+        }
+
+        .blog-content li {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .blog-hero {
+            height: 70vh;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(180, 193, 209, 0.8), rgba(26, 54, 93, 0.6));
+        }
+
+        .blog-meta-detail {
+            color: var(--text-color-light);
+            font-size: var(--small-font-size);
+            border-bottom: 2px solid var(--neutral-300);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            background: var(--neutral-100);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .share-button {
+            background-color: var(--primary-color);
+            color: var(--neutral-100);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all var(--transition-normal);
+            font-weight: var(--font-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color));
+            color: var(--neutral-100);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff20"><path d="M12 2L1 21h22L12 2zm0 3.83L19.13 19H4.87L12 5.83z"/></svg>');
+            background-size: 120px;
+            opacity: 0.1;
+        }
+
+        .related-post {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: all var(--transition-normal);
+        }
+
+        .related-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-post::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transition: all var(--transition-normal);
+        }
+
+        .related-post:hover::after {
+            height: 70%;
+        }
+
+        .related-post-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            z-index: 10;
+            color: white;
+        }
+
+        .blog-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--neutral-300);
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: var(--font-medium);
+            transition: all var(--transition-normal);
+        }
+
+        .nav-button:hover {
+            color: var(--accent-color);
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Blog Hero -->
+    <div class="blog-hero" style="background-image: url('https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg');">
+        <div class="container mx-auto px-4 h-full flex items-center justify-center relative">
+            <div class="text-center max-w-4xl">
+                <span class="inline-block bg-[var(--accent-color)] text-white px-6 py-2 rounded-lg mb-6 transform -rotate-1">REHBER</span>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">Çelik Kapı Seçim Rehberi</h1>
+                <div class="flex items-center justify-center text-white space-x-6 text-lg">
+                    <span><i class="far fa-calendar mr-2"></i>22 Ocak 2024</span>
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                    <span><i class="far fa-clock mr-2"></i>5 dk okuma</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog İçeriği -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-3xl mx-auto">
+            <div class="blog-meta-detail flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-accent-color">
+                        <img src="https://i.pravatar.cc/100" alt="Yazar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Ahmet Yılmaz</p>
+                        <p class="text-sm text-gray-500">Güvenlik Uzmanı</p>
+                    </div>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="share-button">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Paylaş</span>
+                    </button>
+                </div>
+            </div>
+
+            <article class="blog-content">
+                <p class="text-xl text-gray-700 mb-8 font-medium">
+                    Güvenliğiniz için doğru çelik kapı seçiminin püf noktaları ve dikkat edilmesi gereken önemli detaylar hakkında kapsamlı bir rehber hazırladık.
+                </p>
+
+                <h2>Çelik Kapı Seçerken Dikkat Edilmesi Gerekenler</h2>
+                <p>
+                    Çelik kapı seçimi, evinizin güvenliği için en kritik kararlardan biridir. Doğru seçim yapmak için aşağıdaki faktörleri göz önünde bulundurmalısınız:
+                </p>
+                <ul>
+                    <li>Kapı kalınlığı ve malzeme kalitesi</li>
+                    <li>Kilit sisteminin güvenlik seviyesi</li>
+                    <li>Montaj kalitesi ve servis güvencesi</li>
+                    <li>Ses ve ısı yalıtımı özellikleri</li>
+                    <li>Estetik görünüm ve ev dekorasyonuna uyum</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h3 class="text-xl font-semibold mb-4">💡 Önemli İpucu</h3>
+                    <p class="text-white mb-0">
+                        Çelik kapı satın alırken mutlaka garanti süresini ve servis koşullarını kontrol edin. Uzun vadeli kullanım için bu detaylar önemlidir.
+                    </p>
+                </div>
+
+                <h2>Güvenlik Sertifikaları ve Standartlar</h2>
+                <p>
+                    Kaliteli bir çelik kapı, uluslararası güvenlik standartlarına uygun olmalıdır. TSE ve CE gibi sertifikalar, kapınızın güvenilirliğini garantiler.
+                </p>
+
+                <h2>Kilit Sistemleri ve Teknoloji</h2>
+                <p>
+                    Modern çelik kapılarda kullanılan kilit sistemleri, yüksek güvenlik sağlamak için gelişmiş teknolojilerden yararlanır. Elektronik kilit sistemleri, parmak izi okuyucular ve akıllı kart sistemleri gibi seçenekler mevcuttur.
+                </p>
+            </article>
+
+            <!-- Blog Navigasyonu -->
+            <div class="blog-navigation">
+                <a href="#" class="nav-button">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Önceki Yazı</span>
+                </a>
+                <a href="#" class="nav-button">
+                    <span>Sonraki Yazı</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- İlgili Yazılar -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8">İlgili Yazılar</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <a href="#" class="related-post block h-72">
+                        <img src="https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg" 
+                             alt="Laminat Parke Bakımı" 
+                             class="w-full h-full object-cover">
+                        <div class="related-post-content">
+                            <span class="text-sm bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">BAKIM</span>
+                            <h4 class="text-xl font-semibold mt-2">Laminat Parke Bakım Rehberi</h4>
+                        </div>
+                    </a>
+                    <a href="#" class="related-post block h-72">
+                        <img src="https://images.pexels.com/photos/279648/pexels-photo-279648.jpeg" 
+                             alt="Modern Güvenlik Sistemleri" 
+                             class="w-full h-full object-cover">
+                        <div class="related-post-content">
+                            <span class="text-sm bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">TEKNOLOJİ</span>
+                            <h4 class="text-xl font-semibold mt-2">Modern Güvenlik Sistemleri</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

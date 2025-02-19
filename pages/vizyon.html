@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizyonumuz - ASKON</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --primary-light: #2a4a7f;
+            --primary-dark: #0f2444;
+            --secondary-color: #e2b13c;
+            --secondary-light: #f0c969;
+            --secondary-dark: #c99a28;
+            --accent-color: #c4a47c;
+            --text-color: #333333;
+            --text-color-light: #666666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+
+        /* Header'dan gelen stiller */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            z-index: 50;
+        }
+        .group:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover {
+            background: linear-gradient(to right, rgba(196, 164, 124, 0.1), rgba(226, 177, 60, 0.1));
+            color: var(--accent-color);
+        }
+        .nav-link {
+            position: relative;
+            color: var(--text-color);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .accent-text {
+            color: var(--accent-color);
+        }
+
+        .primary-text {
+            color: var(--primary-color);
+        }
+
+        .secondary-text {
+            color: var(--secondary-color);
+        }
+
+        .light-text {
+            color: var(--text-color-light);
+        }
+
+        .accent-bg {
+            background-color: var(--accent-color);
+        }
+
+        .primary-bg {
+            background-color: var(--primary-color);
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+
+    <div id="header-container"></div>
+    <!-- Header offset div -->
+
+    <!-- Hero Section -->
+    <section class="relative h-screen">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                 alt="ASKON Vizyon" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/50"></div>
+        </div>
+        <div class="absolute inset-0 flex items-center">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl">
+                    <h1 class="text-7xl font-light text-white mb-8 drop-shadow-lg" data-aos="fade-up">
+                        VİZYONUMUZ
+                    </h1>
+                    <p class="text-2xl text-white leading-relaxed mb-12 drop-shadow-lg font-light" data-aos="fade-up" data-aos-delay="100">
+                        Güvenlik ve estetiği mükemmel bir uyumla birleştirerek, yaşam alanlarınızı daha değerli kılmak için çalışıyoruz.
+                    </p>
+                    <div class="grid grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-center bg-black/30 backdrop-blur-sm p-6 rounded-lg">
+                            <span class="block text-5xl font-light text-white mb-2">100%</span>
+                            <span class="text-white text-sm uppercase tracking-wider font-medium">Müşteri Memnuniyeti</span>
+                        </div>
+                        <div class="text-center bg-black/30 backdrop-blur-sm p-6 rounded-lg">
+                            <span class="block text-5xl font-light text-white mb-2">50+</span>
+                            <span class="text-white text-sm uppercase tracking-wider font-medium">Patent</span>
+                        </div>
+                        <div class="text-center bg-black/30 backdrop-blur-sm p-6 rounded-lg">
+                            <span class="block text-5xl font-light text-white mb-2">25+</span>
+                            <span class="text-white text-sm uppercase tracking-wider font-medium">Ülkeye İhracat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="animate-bounce">
+                <svg class="w-6 h-6 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vizyon ve Misyon Section -->
+    <section class="py-32 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="space-y-8" data-aos="fade-right">
+                        <h2 class="text-4xl font-light primary-text gradient-border inline-block">Vizyonumuz</h2>
+                        <p class="light-text leading-relaxed text-lg">
+                            ASKON olarak vizyonumuz, çelik kapı sektöründe global bir marka olarak, yenilikçi teknolojiler ve üstün kalite standartlarıyla, müşterilerimizin güvenlik ve estetik beklentilerini en üst düzeyde karşılamaktır.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Sektörde lider ve yenilikçi olmak</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Global pazarda söz sahibi olmak</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Sürdürülebilir büyüme sağlamak</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-8" data-aos="fade-left">
+                        <h2 class="text-4xl font-light primary-text gradient-border inline-block">Misyonumuz</h2>
+                        <p class="light-text leading-relaxed text-lg">
+                            Müşterilerimizin yaşam alanlarını daha güvenli ve estetik hale getirirken, çevreye duyarlı üretim anlayışımız ve sosyal sorumluluk bilinciyle topluma değer katmayı hedefliyoruz.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Yüksek kaliteli ürünler sunmak</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Müşteri memnuniyetini en üst düzeyde tutmak</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-accent-color mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span class="light-text">Çevreye duyarlı üretim yapmak</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stratejik Hedefler Section -->
+    <section class="py-32 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-light mb-6 text-center" style="color: var(--primary-color);" data-aos="fade-up">Stratejik Hedeflerimiz</h2>
+            <p class="text-xl text-center mb-20 max-w-3xl mx-auto" style="color: var(--text-color-light);" data-aos="fade-up" data-aos-delay="100">
+                Sektörde öncü konumumuzu sürdürmek ve müşterilerimize en iyi hizmeti sunmak için belirlediğimiz stratejik hedeflerimiz.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                <!-- Ar-Ge ve İnovasyon -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-500" style="border: 1px solid var(--neutral-200);" data-aos="fade-up">
+                    <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-8" style="background: var(--accent-color);">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-light mb-6" style="color: var(--primary-color);">Ar-Ge ve İnovasyon</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Ar-Ge ve inovasyon çalışmalarında liderlik</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Her yıl en az 5 yeni patent başvurusu</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Akıllı kapı teknolojilerinde liderlik</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Global Büyüme -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-500" style="border: 1px solid var(--neutral-200);" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-8" style="background: var(--accent-color);">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-light mb-6" style="color: var(--primary-color);">Global Büyüme</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">İhracat yapılan ülke sayısını 40'a çıkarma</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Yurtdışı satış ağını %50 büyütme</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Uluslararası pazar payını %30 artırma</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sürdürülebilirlik -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-500" style="border: 1px solid var(--neutral-200);" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-8" style="background: var(--accent-color);">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-light mb-6" style="color: var(--primary-color);">Sürdürülebilirlik</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Karbon ayak izini %40 azaltma</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Çevre dostu üretim ve kullanım.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mt-1 mr-3" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <p style="color: var(--text-color-light);">Çevre dostu sevgi.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Değerlerimiz Section -->
+    <section class="py-32 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-6xl mx-auto">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-4xl font-light primary-text">Temel Değerlerimiz</h2>
+                    <p class="light-text leading-relaxed text-lg">
+                        ASKON olarak, her adımımızda temel değerlerimizi gözetiyor ve bu değerler ışığında geleceğe yürüyoruz.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent-color rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium primary-text mb-2">Dürüstlük ve Şeffaflık</h4>
+                                <p class="light-text">Tüm iş süreçlerimizde dürüstlük ve şeffaflığı esas alıyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent-color rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium primary-text mb-2">Sürekli Gelişim</h4>
+                                <p class="light-text">Kendimizi sürekli geliştiriyor ve yeniliyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent-color rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium primary-text mb-2">Sürdürülebilirlik</h4>
+                                <p class="light-text">Çevreye ve topluma karşı sorumluluklarımızı yerine getiriyoruz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="ASKON Değerler" 
+                         class="rounded-lg shadow-xl w-full h-[600px] object-cover">
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-accent-color opacity-20 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="footer-container"></div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+      <script>
+        // Header'ı yükle
+        fetch('/layouts/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#header-container').innerHTML = data;
+            });
+
+        // Footer'ı yükle
+        fetch('/layouts/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('#footer-container').innerHTML = data;
+            });
+    </script>
+    
+</body>
+</html> 
